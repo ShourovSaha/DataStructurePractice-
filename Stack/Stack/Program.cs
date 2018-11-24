@@ -32,7 +32,12 @@ namespace Stack
             Console.WriteLine("------After 1 Pop--------");
             headNode = stackRepository.Pop(headNode);
             stackRepository.Print(headNode);
-            Console.WriteLine();
+            Console.WriteLine("\n-----Top value of Stack-----\n ");
+
+            int topValue =  stackRepository.TopInStack(headNode);
+            var result = topValue == -999 ? "Empty List!" : topValue.ToString();
+            Console.WriteLine(result);
+
             Console.ReadKey();
         }
     }

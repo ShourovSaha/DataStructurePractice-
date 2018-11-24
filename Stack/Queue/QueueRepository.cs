@@ -4,18 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Stack
+namespace Queue
 {
-    public class StackRepository
+    public class QueueRepository
     {
-        //private Node _node;
-
-        //public StackRepository()
-        //{
-        //    _node = new Node();
-        //}
-
-        public Node Push(Node node, int data)
+        Node headNode, tailNode;
+        
+        public Node Enqueue(Node node, int data)
         {
             if (node == null)
             {
@@ -35,45 +30,29 @@ namespace Stack
             }
         }
 
-        public Node Pop(Node node)
+        public Node Dequeue(Node node)
         {
-            if (node == null)
+            while (node.Next != null)
             {
-                Console.WriteLine("No data to delete!");
-                //return node;
-            }
-            else
-            {
-                Node temp = node;
-                temp = temp.Next;
-                node = temp;
-
+                node = node.Next;
             }
 
-            return node;
+            Node tail = node;
+            node = null;
+            return tail;
+
         }
 
         public void Print(Node node)
         {
             while (node != null)
             {
-                Console.Write("-->" + node.Data);
+                Console.WriteLine("-->" + node.Data);
                 node = node.Next;
             }
         }
 
-        public int TopInStack(Node node)
-        {
-            if (node == null)
-            {
-                return -999;
-            }
-            else
-            {
-                return node.Data;
-            }
-        }
 
+        
     }
-
 }
