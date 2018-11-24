@@ -26,7 +26,25 @@ namespace CharacterFrequency
                 Console.WriteLine(data.Key + "--frequency :" + data.Value);
             }
 
+            Console.WriteLine("\n------Max occuring Number--------\n");
+            foreach (var data in MaxOccuringNumber())
+            {
+                Console.WriteLine(data.Key + "--frequency :" + data.Value);
+            }
+
             Console.ReadKey();
+        }
+
+
+        public static IEnumerable<KeyValuePair<char, int>> MaxOccuringNumber()
+        {
+            int temp = 0;
+            foreach (var data in Dict)
+            {
+                temp = data.Value >= temp ? data.Value : temp; 
+            }
+            var keyValuePair = Dict.Where(x => x.Value == temp);
+            return keyValuePair;
         }
 
         public static void IsContains(char ch)
